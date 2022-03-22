@@ -6,9 +6,9 @@ import './styles/footer.scss'
 import './styles/form.scss'
 import './styles/header.scss'
 
-console.log(checkForName);
-console.log(handleSubmit)
-alert("I EXIST")
+//console.log(checkForName);
+//console.log(handleSubmit)
+//alert("I EXIST")
 export {
     checkForName,
     handleSubmit
