@@ -3,21 +3,30 @@ dotenv.config();
 const path = require('path')
 const express = require('express')
 const mockAPIResponse = require('./mockAPI.js');
-const { default: dist } = require('-');
+//const { default: dist } = require('-');
+const bodyParser = require('body-parser')
+const cors = require('cors');
+const { text } = require('body-parser');
 
-var textapi = process.env.API_KEY
-
+//console.log(textapi)
 const app = express()
 
 app.use(express.static('dist'))
 //app.use(express.static(path.join('dist', "static")));
+app.use(cors());
+app.use(bodyParser.json());
 
+app.use(bodyParser.urlencoded({
+    extended: true
+}))
 
 console.log(__dirname)
-
+const BASE_URL = "https://api.meaningcloud.com/sentiment-2.1";
+const textapi = process.env.API_KEY;
+console.log("textapi",textapi)
 app.get('/', function (req, res) {
-    // res.sendFile('dist/index.html')
-    res.sendFile(path.resolve('src/client/views/index.html'))
+    res.sendFile('dist/index.html')
+    //res.sendFile(path.resolve('src/client/views/index.html'))
    // res.sendFile('dist/index.html')
 })
 
