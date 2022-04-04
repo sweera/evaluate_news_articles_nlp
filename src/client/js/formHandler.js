@@ -14,5 +14,4 @@ function handleSubmit(event) {
         document.getElementById('results').innerHTML = res.message
     })
 }
-clearInterval.checkForName(formText)
 export { handleSubmit }
