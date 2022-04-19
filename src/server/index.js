@@ -40,8 +40,8 @@ app.get('/test', function (req, res) {
     res.send(mockAPIResponse)
 })
 app.post('checkUrl', async function(req,res){
-    const data = req.body.value;
-    const url = `${BASE_URL}?key=${textapi}&url=${data}&lang=en`
+    const rdata = req.body.value;
+    const url = `${BASE_URL}?key=${textapi}&url=${rdata}&lang=en`
     const nres = await fetch(url);
     projectData = await nres.text();
     res.send(projectData)
