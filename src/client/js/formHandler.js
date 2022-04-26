@@ -1,4 +1,11 @@
 import {checkForName} from './nameChecker.js'
+
+//UI Elements
+const agreement = document.getElementById("agreement");
+const confidence = document.getElementById("confidence");
+const irony = document.getElementById("irony");
+const model = document.getElementById("model");
+const scoreTag = document.getElementById("score_tag");
 function handleSubmit(event) {
     event.preventDefault()
 
@@ -28,5 +35,5 @@ function handleSubmit(event) {
     //    // document.getElementById('results').innerHTML = res.message
     //     document.getElementById('results').innerHTML = res.message
     // })
-
+Client.checkForName(formText)
 export { handleSubmit }

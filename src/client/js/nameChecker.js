@@ -1,19 +1,5 @@
 function checkForName(inputText) {
-    console.log("::: Running checkForName :::", inputText);
-    let names = [
-        "Picard",
-        "Janeway",
-        "Kirk",
-        "Archer",
-        "Georgiou"
-    ]
-
-    if(names.includes(inputText)) {
-       alert("Welcome, Captain!")
-       //document.getElementById('results').innerHTML = res.inputText
-       //alert(inputText)
-       console.log('hey')
-    }
+    const regexPattern = "^https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*";
 }
 
 export { checkForName }
