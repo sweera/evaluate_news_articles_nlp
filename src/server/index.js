@@ -36,14 +36,25 @@ app.listen(8080, function () {
     console.log('App listening on port 8080!')
 })
 
-app.get('/test', function (req, res) {
-    res.send(mockAPIResponse)
-})
-app.post('checkUrl', async function(req,res){
-    const rdata = req.body.value;
-    const url = `${BASE_URL}?key=${textapi}&url=${rdata}&lang=en`
-    const nres = await fetch(url);
-    projectData = await nres.text();
-    res.send(projectData)
+// app.get('/test', function (req, res) {
+//     res.send(mockAPIResponse)
+// })
 
-})
+//GET request
+app.get("/all", (req, res) => {
+    res.send(projectData);
+  });
+
+//POST request
+
+// app.post('checkUrl', async function(req,res){
+//     const rdata = req.body.value;
+//     const url = `${BASE_URL}?key=${textapi}&url=${rdata}&lang=en`
+//     const nres = await fetch(url);
+//     projectData = await nres.text();
+//     res.send(projectData)
+app.post("/addInfo", (req, res) => {
+    projectData = req.body;
+    res.send({ message: "Info received" });
+    console.log(req);
+  });
