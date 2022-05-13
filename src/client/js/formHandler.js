@@ -1,14 +1,28 @@
 import {checkForName} from './nameChecker.js'
-
+const BASE_URL = "https://api.meaningcloud.com/sentiment-2.1";
+const textapi = process.env.API_KEY;
+//console.log("textapi",textapi)
 //UI Elements
 const agreement = document.getElementById("agreement");
 const confidence = document.getElementById("confidence");
 const irony = document.getElementById("irony");
 const model = document.getElementById("model");
 const scoreTag = document.getElementById("score_tag");
+
 function handleSubmit(event) {
-    event.preventDefault()
-    
+    event.preventDefault();
+    const url = document.getElementById("url").value;
+    const name = document.getElementById("name").value;
+    console.log(url);
+    console.log(name);
+    if(url !==""){
+      const meaningUrl = BASE_URL + textapi + "&url=" + url;
+      getInformation(meaningUrl).then(function (data) {
+        console.log(data);
+      });}
+    else{
+      alert("Please enter a valid Url!");
+    }
     // // check what text was put into the form field
     // let formText = document.getElementById('url').value
     // Client.checkForName(formText)
@@ -35,7 +49,17 @@ function handleSubmit(event) {
     //    // document.getElementById('results').innerHTML = res.message
     //     document.getElementById('results').innerHTML = res.message
     // })
-
+//GET function to get API data
+const getInformation = async (meaningUrl) => {
+  const res = await fetch(meaningUrl);
+  try {
+    const data = await res.json();
+    console.log(data);
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
 // Function to POST data
     const postData = async (url = "", data = {}) => {
         const response = await fetch(url, {
@@ -80,5 +104,5 @@ const updateUI = async () => {
     console.log("error", error);
   }
 }
-Client.checkForName(formText)
+//Client.checkForName(formText)
 export { handleSubmit }
