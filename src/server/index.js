@@ -1,6 +1,10 @@
 projectData = {}
 const dotenv = require('dotenv');
 dotenv.config();
+const BASE_URL = "https://api.meaningcloud.com/sentiment-2.1";
+const textapi = process.env.API_KEY;
+console.log("textapi",textapi)
+
 const path = require('path')
 const express = require('express')
 const mockAPIResponse = require('./mockAPI.js');
@@ -11,7 +15,7 @@ const { text } = require('body-parser');
 
 //console.log(textapi)
 const app = express()
-
+const fetch = require("node-fetch");
 app.use(express.static('dist'))
 //app.use(express.static(path.join('dist', "static")));
 app.use(cors());
@@ -22,9 +26,6 @@ app.use(bodyParser.urlencoded({
 }))
 
 console.log(__dirname)
-const BASE_URL = "https://api.meaningcloud.com/sentiment-2.1";
-const textapi = process.env.API_KEY;
-console.log("textapi",textapi)
 app.get('/', function (req, res) {
     res.sendFile('dist/index.html')
     //res.sendFile(path.resolve('src/client/views/index.html'))
@@ -41,7 +42,7 @@ app.listen(8080, function () {
 // })
 
 //GET request
-app.get("/all", (req, res) => {
+app.get("/projectData", (req, res) => {
     res.send(projectData);
   });
 

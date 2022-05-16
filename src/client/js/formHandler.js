@@ -15,8 +15,9 @@ function handleSubmit(event) {
     const name = document.getElementById("name").value;
     console.log(url);
     console.log(name);
-    if(url !==""){
-      const meaningUrl = BASE_URL + textapi + "&url=" + url;
+    if(url !==" "){
+      const meaningUrl = BASE_URL + textapi + url;
+      console.log(meaningUrl);
       getInformation(meaningUrl).then(function (data) {
         console.log(data);
       });}
