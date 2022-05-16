@@ -1,10 +1,12 @@
+//import {fetch} from "node-fetch";
+
 projectData = {}
 const dotenv = require('dotenv');
+//dotenv.config({path:'.env'});
 dotenv.config();
-const BASE_URL = "https://api.meaningcloud.com/sentiment-2.1";
-const textapi = process.env.API_KEY;
-console.log("textapi",textapi)
-
+//const BASE_URL = "https://api.meaningcloud.com/sentiment-2.1?";
+//const textapi = process.env.API_KEY;
+//console.log(`Your api key is ${textapi}`);  // Used for testing API key entry
 const path = require('path')
 const express = require('express')
 const mockAPIResponse = require('./mockAPI.js');
@@ -15,7 +17,7 @@ const { text } = require('body-parser');
 
 //console.log(textapi)
 const app = express()
-const fetch = require("node-fetch");
+//const fetch = require('node-fetch');
 app.use(express.static('dist'))
 //app.use(express.static(path.join('dist', "static")));
 app.use(cors());
@@ -47,13 +49,6 @@ app.get("/projectData", (req, res) => {
   });
 
 //POST request
-
-// app.post('checkUrl', async function(req,res){
-//     const rdata = req.body.value;
-//     const url = `${BASE_URL}?key=${textapi}&url=${rdata}&lang=en`
-//     const nres = await fetch(url);
-//     projectData = await nres.text();
-//     res.send(projectData)
 app.post("/addInfo", (req, res) => {
     projectData = req.body;
     res.send({ message: "Info received" });

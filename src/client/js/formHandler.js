@@ -1,6 +1,8 @@
 import {checkForName} from './nameChecker.js'
 const BASE_URL = "https://api.meaningcloud.com/sentiment-2.1";
 const textapi = process.env.API_KEY;
+console.log(`Your api key is ${textapi}`);  // Used for testing API key entry
+
 //console.log("textapi",textapi)
 //UI Elements
 const agreement = document.getElementById("agreement");
@@ -13,10 +15,11 @@ function handleSubmit(event) {
     event.preventDefault();
     const url = document.getElementById("url").value;
     const name = document.getElementById("name").value;
-    console.log(url);
+    //console.log(url);
     console.log(name);
     if(url !==" "){
-      const meaningUrl = BASE_URL + textapi + url;
+      //const meaningUrl = BASE_URL + textapi + url;
+      const meaningUrl = `${BASE_URL}&key=${textapi}&url=${url}&lang=en`;
       console.log(meaningUrl);
       getInformation(meaningUrl).then(function (data) {
         console.log(data);
