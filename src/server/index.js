@@ -4,9 +4,9 @@ projectData = {}
 const dotenv = require('dotenv');
 //dotenv.config({path:'.env'});
 dotenv.config();
-//const BASE_URL = "https://api.meaningcloud.com/sentiment-2.1?";
-//const textapi = process.env.API_KEY;
-//console.log(`Your api key is ${textapi}`);  // Used for testing API key entry
+const BASE_URL = "https://api.meaningcloud.com/sentiment-2.1?";
+const textapi = process.env.API_KEY;
+console.log(`Your api key is ${textapi}`);  // Used for testing API key entry
 const path = require('path')
 const express = require('express')
 const mockAPIResponse = require('./mockAPI.js');
@@ -42,7 +42,8 @@ app.listen(8080, function () {
 // app.get('/test', function (req, res) {
 //     res.send(mockAPIResponse)
 // })
-
+const meaningUrl = `${BASE_URL}&key=${textapi}&url=${url}&lang=en`;
+      console.log(meaningUrl);
 //GET request
 app.get("/projectData", (req, res) => {
     res.send(projectData);

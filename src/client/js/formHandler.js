@@ -1,7 +1,11 @@
 import {checkForName} from './nameChecker.js'
-const BASE_URL = "https://api.meaningcloud.com/sentiment-2.1";
-const textapi = process.env.API_KEY;
-console.log(`Your api key is ${textapi}`);  // Used for testing API key entry
+//require('dotenv').config()
+
+//const dotenv = require('dotenv');
+//dotenv.config();
+const BASE_URL = "https://api.meaningcloud.com/sentiment-2.1?";
+const textApi = process.env.API_KEY;
+console.log(`Your api key is ${textApi}`);  // Used for testing API key entry
 
 //console.log("textapi",textapi)
 //UI Elements
@@ -17,14 +21,14 @@ function handleSubmit(event) {
     const name = document.getElementById("name").value;
     //console.log(url);
     console.log(name);
-    if(url !==" "){
+    if(url ==" "){
       //const meaningUrl = BASE_URL + textapi + url;
-      const meaningUrl = `${BASE_URL}&key=${textapi}&url=${url}&lang=en`;
-      console.log(meaningUrl);
-      getInformation(meaningUrl).then(function (data) {
-        console.log(data);
-      });}
-    else{
+     // const meaningUrl = `${BASE_URL}&key=${textApi}&url=${url}&lang=en`;
+      //console.log(meaningUrl);
+     // getInformation(meaningUrl).then(function (data) {
+        //console.log(data);
+     // });}
+    //else{
       alert("Please enter a valid Url!");
     }
     // // check what text was put into the form field
