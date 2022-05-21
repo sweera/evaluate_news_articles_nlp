@@ -55,3 +55,7 @@ app.post("/addInfo", (req, res) => {
     res.send({ message: "Info received" });
     console.log(req);
   });
+app.post("/projectData", async function(req, res){
+    const meaningUrl = `${BASE_URL}&key=${textapi}&url=${req.body.url}&lang=en`;
+    console.log(meaningUrl);  
+})
