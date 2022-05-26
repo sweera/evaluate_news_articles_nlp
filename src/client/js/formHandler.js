@@ -21,7 +21,23 @@ function handleSubmit(event) {
     const name = document.getElementById("name").value;
     //console.log(url);
     console.log(name);
-    if(url ==" "){
+    if(url !=" "){
+      fetch('http://localhost:8080/projectData',{
+        method: "POST",
+        credentials: "same-origin",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({url: url}),
+      })
+      .then(res => res.json())
+      .then(function(res){
+        updateUI(res)
+      });
+    } else{
+      alert('Failed')
+    };
+  };
       //const meaningUrl = BASE_URL + textapi + url;
      // const meaningUrl = `${BASE_URL}&key=${textApi}&url=${url}&lang=en`;
       //console.log(meaningUrl);
@@ -29,8 +45,8 @@ function handleSubmit(event) {
         //console.log(data);
      // });}
     //else{
-      alert("Please enter a valid Url!");
-    }
+      //alert("Please enter a valid Url!");
+   // }
     // // check what text was put into the form field
     // let formText = document.getElementById('url').value
     // Client.checkForName(formText)
@@ -47,7 +63,7 @@ function handleSubmit(event) {
     // else{
     //     Client.handleError();
     // }
-}
+//}
 
 //async function fetchResults(formText)
     // console.log("::: Form Submitted :::")
@@ -58,34 +74,34 @@ function handleSubmit(event) {
     //     document.getElementById('results').innerHTML = res.message
     // })
 //GET function to get API data
-const getInformation = async (meaningUrl) => {
-  const res = await fetch(meaningUrl);
-  try {
-    const data = await res.json();
-    console.log(data);
-    return data;
-  } catch (error) {
-    console.log(error);
-  }
-};
+// const getInformation = async (meaningUrl) => {
+//   const res = await fetch(meaningUrl);
+//   try {
+//     const data = await res.json();
+//     console.log(data);
+//     return data;
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
 // Function to POST data
-    const postData = async (url = "", data = {}) => {
-        const response = await fetch(url, {
-          method: "POST",
-          credentials: "same-origin",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        });
-        try {
-          const newData = await response.json();
-          console.log(newData);
-          return newData;
-        } catch (error) {
-          console.log("error", error);
-        }
-      };
+    // const postData = async (url = "", data = {}) => {
+    //     const response = await fetch(url, {
+    //       method: "POST",
+    //       credentials: "same-origin",
+    //       headers: {
+    //         "Content-Type": "application/json",
+    //       },
+    //       body: JSON.stringify(data),
+    //     });
+    //     try {
+    //       const newData = await response.json();
+    //       console.log(newData);
+    //       return newData;
+    //     } catch (error) {
+    //       console.log("error", error);
+    //     }
+    //   };
 
 //Function to get project data
 // const getprojectData = async (url) => {
@@ -101,7 +117,7 @@ const getInformation = async (meaningUrl) => {
 
 //Update UI
 const updateUI = async () => {
-  const request = await fetch("/all");
+  const request = await fetch('http://localhost:8080/projectData');
   try{
     const allData = await request.json();
     console.log(allData);
