@@ -58,4 +58,17 @@ app.post("/addInfo", (req, res) => {
 app.post("/projectData", async function(req, res){
     const meaningUrl = `${BASE_URL}&key=${textapi}&url=${req.body.url}&lang=en`;
     console.log(meaningUrl);  
-})
+    const allData = await fetch(url).then(res => res.json());
+    console.log(allData);
+    let dataEntry = {
+        model: allData.model,
+        score_tag: allData.score_tag,
+        irony: allData.irony,
+        agreement :allData.agreement,
+        confidence: allData.confidence,
+        subjectivity: allData.subjectivity
+    };
+    projectData = dataEntry;
+    console.log(projectData);
+    res.send(projectData);
+});

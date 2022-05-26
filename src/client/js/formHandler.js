@@ -3,9 +3,9 @@ import {checkForName} from './nameChecker.js'
 
 //const dotenv = require('dotenv');
 //dotenv.config();
-const BASE_URL = "https://api.meaningcloud.com/sentiment-2.1?";
-const textApi = process.env.API_KEY;
-console.log(`Your api key is ${textApi}`);  // Used for testing API key entry
+//const BASE_URL = "https://api.meaningcloud.com/sentiment-2.1?";
+//const textApi = process.env.API_KEY;
+//console.log(`Your api key is ${textApi}`);  // Used for testing API key entry
 
 //console.log("textapi",textapi)
 //UI Elements
@@ -88,16 +88,16 @@ const getInformation = async (meaningUrl) => {
       };
 
 //Function to get project data
-const getprojectData = async (url) => {
-  const res = await fetch(url);
-  try {
-    const data = await res.json();
-    console.log(data);
-    return data;
-  } catch (error) {
-    console.log("error", error);
-  }
-};
+// const getprojectData = async (url) => {
+//   const res = await fetch(url);
+//   try {
+//     const data = await res.json();
+//     console.log(data);
+//     return data;
+//   } catch (error) {
+//     console.log("error", error);
+//   }
+// };
 
 //Update UI
 const updateUI = async () => {
@@ -113,4 +113,4 @@ const updateUI = async () => {
   }
 }
 //Client.checkForName(formText)
-export { handleSubmit }
+export { handleSubmit,updateUI }
