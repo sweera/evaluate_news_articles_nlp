@@ -42,23 +42,23 @@ app.listen(8080, function () {
 // app.get('/test', function (req, res) {
 //     res.send(mockAPIResponse)
 // })
-const meaningUrl = `${BASE_URL}&key=${textapi}&url=${url}&lang=en`;
-      console.log(meaningUrl);
+//const meaningUrl = `${BASE_URL}&key=${textapi}&url=${req.body.url}&lang=en`;
+     // console.log(meaningUrl);
 //GET request
-app.get("/projectData", (req, res) => {
+app.get('/projectData', (req, res) => {
     res.send(projectData);
   });
 
 //POST request
-app.post("/addInfo", (req, res) => {
-    projectData = req.body;
-    res.send({ message: "Info received" });
-    console.log(req);
-  });
-app.post("/projectData", async function(req, res){
+// app.post("/addInfo", (req, res) => {
+//     projectData = req.body;
+//     res.send({ message: "Info received" });
+//     console.log(req);
+//   });
+app.post('/projectData', async function(req, res){
     const meaningUrl = `${BASE_URL}&key=${textapi}&url=${req.body.url}&lang=en`;
     console.log(meaningUrl);  
-    const allData = await fetch(url).then(res => res.json());
+    const allData = await fetch(meaningUrl).then(res => res.json());
     console.log(allData);
     let dataEntry = {
         model: allData.model,
