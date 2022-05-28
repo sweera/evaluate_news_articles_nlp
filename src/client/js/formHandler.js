@@ -14,15 +14,16 @@ const confidence = document.getElementById("confidence");
 const irony = document.getElementById("irony");
 const model = document.getElementById("model");
 const scoreTag = document.getElementById("score_tag");
-
-function handleSubmit(event) {
-    event.preventDefault();
+document.getElementById("submit").addEventListener("click", handleSubmit);
+function handleSubmit(e) {
+   e.preventDefault();
     const url = document.getElementById("url").value;
     const name = document.getElementById("name").value;
     //console.log(url);
     console.log(name);
-    if(url !=" "){
-      fetch('http://localhost:8080/projectData',{
+    if(Client.checkForName(url)){
+      console.log("Form submitted");
+      fetch('https://localhost:8080/projectData',{
         method: "POST",
         credentials: "same-origin",
         headers: {
@@ -37,7 +38,12 @@ function handleSubmit(event) {
     } else{
       alert('Failed')
     };
+    return false;
   };
+  // const submit = document.getElementById("submit");
+  // if(submit){
+  //   submit.addEventListener("click", handleSubmit);
+  // }
       //const meaningUrl = BASE_URL + textapi + url;
      // const meaningUrl = `${BASE_URL}&key=${textApi}&url=${url}&lang=en`;
       //console.log(meaningUrl);
@@ -117,7 +123,7 @@ function handleSubmit(event) {
 
 //Update UI
 const updateUI = async () => {
-  const request = await fetch('http://localhost:8080/projectData');
+  const request = await fetch('https://localhost:8080/projectData');
   try{
     const allData = await request.json();
     console.log(allData);
@@ -126,7 +132,7 @@ const updateUI = async () => {
   }
   catch(error){
     console.log("error", error);
-  }
-}
+  };
+};
 //Client.checkForName(formText)
-export { handleSubmit,updateUI }
+export { handleSubmit,updateUI };

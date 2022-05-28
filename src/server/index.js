@@ -24,7 +24,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 app.use(bodyParser.urlencoded({
-    extended: true
+    extended: false
 }))
 
 console.log(__dirname)
@@ -35,9 +35,10 @@ app.get('/', function (req, res) {
 })
 
 // designates what port the app will listen to for incoming requests
+const port = 8080;
 app.listen(8080, function () {
     console.log('App listening on port 8080!')
-})
+});
 
 // app.get('/test', function (req, res) {
 //     res.send(mockAPIResponse)
