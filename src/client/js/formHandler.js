@@ -17,10 +17,10 @@ const scoreTag = document.getElementById("score_tag");
 document.getElementById("submit").addEventListener("click", handleSubmit);
 function handleSubmit(e) {
    e.preventDefault();
-    const url = document.getElementById("url").value;
+    let url = document.getElementById("url").value;
     //const name = document.getElementById("name").value;
     //console.log(url);
-    console.log(name);
+    console.log(url);
     if(Client.checkForName(url)){
       console.log("Form submitted");
       fetch('https://localhost:8080/projectData',{
