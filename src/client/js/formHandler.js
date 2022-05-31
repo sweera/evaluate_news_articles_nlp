@@ -18,7 +18,7 @@ document.getElementById("submit").addEventListener("click", handleSubmit);
 function handleSubmit(e) {
    e.preventDefault();
     const url = document.getElementById("url").value;
-    const name = document.getElementById("name").value;
+    //const name = document.getElementById("name").value;
     //console.log(url);
     console.log(name);
     if(Client.checkForName(url)){

@@ -16,7 +16,8 @@ const cors = require('cors');
 const { text } = require('body-parser');
 
 //console.log(textapi)
-const app = express()
+const app = express();
+//const fetch = require("node-fetch");
 //const fetch = require('node-fetch');
 app.use(express.static('dist'))
 //app.use(express.static(path.join('dist', "static")));
@@ -40,9 +41,9 @@ app.listen(8080, function () {
     console.log('App listening on port 8080!')
 });
 
-// app.get('/test', function (req, res) {
-//     res.send(mockAPIResponse)
-// })
+app.get('/test', function (req, res) {
+    res.send(mockAPIResponse)
+})
 //const meaningUrl = `${BASE_URL}&key=${textapi}&url=${req.body.url}&lang=en`;
      // console.log(meaningUrl);
 //GET request
