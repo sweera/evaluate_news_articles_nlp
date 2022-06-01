@@ -1,6 +1,6 @@
-//import {fetch} from "node-fetch";
+//import fetch from "node-fetch";
 
-projectData = {}
+
 const dotenv = require('dotenv');
 //dotenv.config({path:'.env'});
 dotenv.config();
@@ -17,8 +17,8 @@ const { text } = require('body-parser');
 
 //console.log(textapi)
 const app = express();
-//const fetch = require("node-fetch");
-//const fetch = require('node-fetch');
+//fetch = require('node-fetch');
+const fetch = require('node-fetch');
 app.use(express.static('dist'))
 //app.use(express.static(path.join('dist', "static")));
 app.use(cors());
@@ -47,6 +47,7 @@ app.get('/test', function (req, res) {
 //const meaningUrl = `${BASE_URL}&key=${textapi}&url=${req.body.url}&lang=en`;
      // console.log(meaningUrl);
 //GET request
+projectData = {}
 app.get('/projectData', (req, res) => {
     res.send(projectData);
   });
