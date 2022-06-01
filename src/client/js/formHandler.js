@@ -23,7 +23,7 @@ function handleSubmit(e) {
     console.log(url);
     if(Client.checkForName(url)){
       console.log("Form submitted");
-      fetch('https://localhost:8080/projectData',{
+      fetch('http://localhost:8080/projectData',{
         method: "POST",
         credentials: "same-origin",
         headers: {
@@ -38,7 +38,7 @@ function handleSubmit(e) {
     } else{
       alert('Failed')
     };
-    return false;
+    //return false;
   };
   // const submit = document.getElementById("submit");
   // if(submit){
@@ -123,7 +123,7 @@ function handleSubmit(e) {
 
 //Update UI
 const updateUI = async () => {
-  const request = await fetch('https://localhost:8080/projectData');
+  const request = await fetch('http://localhost:8080/projectData');
   try{
     const allData = await request.json();
     console.log(allData);
