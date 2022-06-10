@@ -23,15 +23,16 @@ function handleSubmit(e) {
     console.log(url);
     if(Client.checkForName(url)){
       console.log("Form submitted");
-      fetch('http://localhost:8080/projectData',{
-        method: "POST",
-        credentials: "same-origin",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({url: url}),
-      })
-      .then(res => res.json())
+      fetch('http://localhost:8080/projectData'//,{
+      //   method: "POST",
+      //   credentials: "same-origin",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify({url: url}),
+      // }
+      )
+      .then((res) => res.json())
       .then(function(res){
         updateUI(res)
       });
@@ -123,7 +124,7 @@ function handleSubmit(e) {
 
 //Update UI
 const updateUI = async () => {
-  const request = await fetch('http://localhost:8080/projectData');
+ // const request = await fetch('http://localhost:8080/projectData');
   try{
     const allData = await request.json();
     console.log(allData);
