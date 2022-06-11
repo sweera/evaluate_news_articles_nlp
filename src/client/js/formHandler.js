@@ -23,15 +23,7 @@ function handleSubmit(e) {
     console.log(url);
     if(Client.checkForName(url)){
       console.log("Form submitted");
-      fetch('http://localhost:8080/projectData'//,{
-      //   method: "POST",
-      //   credentials: "same-origin",
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      //   body: JSON.stringify({url: url}),
-      // }
-      )
+      fetch("http://localhost:8080/projectData")
       .then((res) => res.json())
       .then(function(res){
         updateUI(res)
@@ -137,3 +129,11 @@ const updateUI = async () => {
 };
 //Client.checkForName(formText)
 export { handleSubmit,updateUI };
+//,{
+      //   method: "POST",
+      //   credentials: "same-origin",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify({url: url}),
+      // }
