@@ -61,7 +61,7 @@ app.get('/projectData', (req, res) => {
 app.get('/projectData', async function(req, res){
     const meaningUrl = `${BASE_URL}&key=${textapi}&url=${req.body.url}&lang=en`;
     console.log(meaningUrl);  
-    const allData = await fetch(meaningUrl).then(res => res.json());
+    const allData = await fetch(meaningUrl).then((res) => res.json());
     console.log(allData);
     let dataEntry = {
         model: allData.model,
