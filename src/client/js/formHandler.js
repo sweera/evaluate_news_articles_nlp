@@ -24,6 +24,30 @@ function handleSubmit(e) {
   }
   //return false;
 }
+
+//       subjectivity: allData.subjectivity
+//   };
+//   projectData = dataEntry;
+//   console.log(projectData);
+//   res.send(projectData);
+// });
+//Update UI
+const updateUI = async () => {
+  // const request = await fetch('http://localhost:8080/projectData');
+  try {
+    const allData = await request.json();
+    console.log(allData);
+    agreement.innerHTML = `<h4>${allData.agreement}</h4>`;
+    confidence.innerHTML = `<h4>${allData.confidence}</h4>`;
+  } catch (error) {
+    console.log("error", error);
+  }
+};
+//Client.checkForName(formText)
+export { handleSubmit, updateUI };
+
+
+///************************************************************************************************/////
 // const submit = document.getElementById("submit");
 // if(submit){
 //   submit.addEventListener("click", handleSubmit);
@@ -104,21 +128,17 @@ function handleSubmit(e) {
 //     console.log("error", error);
 //   }
 // };
-
-//Update UI
-const updateUI = async () => {
-  // const request = await fetch('http://localhost:8080/projectData');
-  try {
-    const allData = await request.json();
-    console.log(allData);
-    agreement.innerHTML = `<h4>${allData.agreement}</h4>`;
-    confidence.innerHTML = `<h4>${allData.confidence}</h4>`;
-  } catch (error) {
-    console.log("error", error);
-  }
-};
-//Client.checkForName(formText)
-export { handleSubmit, updateUI };
+// app.get('/projectData', async function(req, res){
+//   const meaningUrl = `${BASE_URL}&key=${textapi}&url=${req.body.url}&lang=en`;
+//   console.log(meaningUrl);  
+//   const allData = await fetch(meaningUrl).then((res) => res.json());
+//   console.log(allData);
+//   let dataEntry = {
+//       model: allData.model,
+//       score_tag: allData.score_tag,
+//       irony: allData.irony,
+//       agreement :allData.agreement,
+//       confidence: allData.confidence,
 //,{
 //   method: "POST",
 //   credentials: "same-origin",
