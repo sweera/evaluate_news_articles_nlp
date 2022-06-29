@@ -1,10 +1,10 @@
 import { checkForName } from "./nameChecker.js";
 //UI Elements
-const agreement = document.getElementById("agreement");
-const confidence = document.getElementById("confidence");
-const irony = document.getElementById("irony");
-const model = document.getElementById("model");
-const scoreTag = document.getElementById("score_tag");
+// const agreement = document.getElementById("agreement");
+// const confidence = document.getElementById("confidence");
+// const irony = document.getElementById("irony");
+// const model = document.getElementById("model");
+// const scoreTag = document.getElementById("score_tag");
 document.getElementById("submit").addEventListener("click", handleSubmit);
 function handleSubmit(e) {
   e.preventDefault();
@@ -33,19 +33,25 @@ function handleSubmit(e) {
 // });
 //Update UI
 const updateUI = async () => {
-  // const request = await fetch('http://localhost:8080/projectData');
+  const request = await fetch("http://localhost:8080/projectData");
   try {
     const allData = await request.json();
     console.log(allData);
-    agreement.innerHTML = `<h4>${allData.agreement}</h4>`;
-    confidence.innerHTML = `<h4>${allData.confidence}</h4>`;
+    // agreement.innerHTML = `<h4>${allData.agreement}</h4>`;
+    // confidence.innerHTML = `<h4>${allData.confidence}</h4>`;
+    // irony.innerHTML = `<h4>${allData.irony}</h4>;`
+    // scoreTag.innerHTML = `<h4>${allData.scoreTag}</h4>`
+    document.getElementById("model").innerHTML = `Model:${allData.model}`;
+    document.getElementById("confidence").innerHTML = `Confidence:${allData.confidence}`;
+    document.getElementById("score_tag").innerHTML = `Score Tag: ${allData.score_tag}`;
+    document.getElementById("agreement").innerHTML = `Agreement: ${allData.agreement}`;
+    document.getElementById("subjectivity").innerHTML = `Subjectivity: ${allData.subjectivity}`;
   } catch (error) {
     console.log("error", error);
   }
 };
 //Client.checkForName(formText)
 export { handleSubmit, updateUI };
-
 
 ///************************************************************************************************/////
 // const submit = document.getElementById("submit");
@@ -130,7 +136,7 @@ export { handleSubmit, updateUI };
 // };
 // app.get('/projectData', async function(req, res){
 //   const meaningUrl = `${BASE_URL}&key=${textapi}&url=${req.body.url}&lang=en`;
-//   console.log(meaningUrl);  
+//   console.log(meaningUrl);
 //   const allData = await fetch(meaningUrl).then((res) => res.json());
 //   console.log(allData);
 //   let dataEntry = {
