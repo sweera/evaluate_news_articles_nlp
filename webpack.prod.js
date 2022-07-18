@@ -14,6 +14,8 @@ module.exports = {
   output: {
     libraryTarget: "var",
     library: "Client",
+    path: path.join(__dirname, "dist"),
+    filename: "bundle-[hash].min.js",
   },
   module: {
     rules: [

@@ -10,6 +10,13 @@ module.exports = {
     libraryTarget: "var",
     library: "Client",
   },
+  output: {
+    path: path.join(__dirname, "dist"),
+    filename: "bundle-[hash].min.js",
+    libraryTarget: "var",
+    library: "Client"
+},
+
   mode: "development",
   devtool: "source-map",
   stats: "verbose",
